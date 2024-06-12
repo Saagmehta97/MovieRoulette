@@ -10,7 +10,7 @@ export const getMovies = async () => {
     try {
         const response  = await fetch(`${base_url}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`);
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
         return data.results;
     }
     catch(error) {

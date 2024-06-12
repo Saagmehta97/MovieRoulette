@@ -7,7 +7,7 @@ import './styles/styles.css';
 
 function App() {
     const dispatch = useDispatch();
-    const movie = useSelector((state) => state.movie.id);
+    const movie = useSelector((state) => state.movie.title);
     const posterPath = useSelector((state) => state.movie.poster_path);
     const status = useSelector((state) => state.movie.status);
     const error = userSelector((state) => state.movie.error);

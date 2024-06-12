@@ -20,3 +20,17 @@ export const fetchMovieFailure = (error) => ({
     payload: error,
 });
 
+export const fetchMovie = () => {
+    return async (dispatch) => {
+        dispatch(fetchMovieRequest());
+        try {
+            const movies = await getMovies();
+            const randomMovie = movies[Math.floor(Math.random() * movies.length)];
+            dispatch(fetchMovieSuccess(randomMovie))
+        }
+        catch (error) {
+            dispatch(fetchMovieFailure);
+        }
+    };
+};
+
