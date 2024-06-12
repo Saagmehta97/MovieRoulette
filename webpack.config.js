@@ -6,12 +6,10 @@ module.exports = {
     output: {
         path: path.join(__dirname, '/dist'),
         filename: 'bundle.js'
-        
     },
-
     plugins: [
         new HTMLWebpackPlugin({
-            template: './src/index.html'
+            template: './public/index.html'
         })
     ],
     module: {
@@ -25,8 +23,27 @@ module.exports = {
                         presets: ['@babel/preset-env', '@babel/preset-react']
                     }
                 }
+            },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader']
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[hash].[ext]',
+                            outputPath: 'assets/images'
+                        }
+                    }
+                ]
             }
         ]
+    },
+    resolve: {
+        extensions: ['.js', '.jsx']
     }
 
 
