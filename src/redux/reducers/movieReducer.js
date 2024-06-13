@@ -1,21 +1,23 @@
-import { fetchMovieRequest, fetchMovieSuccess, fetchMovieFailure} from "../actions/actions";
+import { FETCH_MOVIE_REQUEST, FETCH_MOVIE_SUCCESS, FETCH_MOVIE_FAILURE } from '../../constants/actionTypes';
 
 const initialState = {
     title: null, 
     poster_path: null,
+    image_url: null,
     status: 'idle',
     error: null,
 };
 
 const movieReducer = (state = initialState, action) => {
+    console.log('Action: ', action);
     switch (action.type) {
-        case fetchMovieRequest:
+        case FETCH_MOVIE_REQUEST:
             return {
                 ...state,
                 status: 'loading',
                 error: null,
             };
-        case fetchMovieSuccess:
+        case FETCH_MOVIE_SUCCESS:
             return {
                 ...state,
                 status: 'succeeded',
@@ -24,7 +26,7 @@ const movieReducer = (state = initialState, action) => {
                 imageUrl: action.payload.imageUrl,
                 error: null, 
             };
-        case fetchMovieFailure:
+        case FETCH_MOVIE_FAILURE:
             return {
                 ...state,
                 status: 'failed',

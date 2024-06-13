@@ -2,9 +2,12 @@
 import { getMovies, getImageUrl } from '../../api/movieService';
 
 //Action type constants
-const FETCH_MOVIE_REQUEST = 'FETCH_MOVIE_REQUEST';
-const FETCH_MOVIE_SUCCESS = 'FETCH_MOVIE_SUCCESS';
-const FETCH_MOVIE_FAILURE = 'FETCH_MOVIE_FAILURE';
+import {
+    FETCH_MOVIE_REQUEST,
+    FETCH_MOVIE_SUCCESS, 
+    FETCH_MOVIE_FAILURE 
+} from '../../constants/actionTypes';
+
 
 export const fetchMovieRequest = () => ({
     type: FETCH_MOVIE_REQUEST,

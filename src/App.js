@@ -9,39 +9,40 @@ function App() {
     const dispatch = useDispatch();
     const title = useSelector((state) => state.movie.title);
     const posterPath = useSelector((state) => state.movie.poster_path);
+    const imageUrl = useSelector((state) => state.movie.imageUrl);
     const status = useSelector((state) => state.movie.status);
     const error = useSelector((state) => state.movie.error);
     
     const [count, setCount] = useState(1);
 
     const handleNewMovie = () => {
-        if (count === 2) {
+        if (count === 4) {
             alert("Warning: You can only get one more random movie!")
         }
-        if (count < 3) {
-            dispatch(fetchMovie);
+        if (count < 5) {
+            dispatch(fetchMovie());
             setCount(count+1);
         } else {
-            alert('Error: You have reached the limit of 3 movie suggestions')
+            alert('Error: You have reached the limit of 5 movie suggestions')
         }
     }
     useEffect(() => {
-        dispatch(fetchMovie)
+        dispatch(fetchMovie())
     }, [dispatch]);
 
     return (
-        <div className="App">
+        <div className="container">
             <h1>Movie Generator</h1>
-            <button onClick={handleNewMovie} disabled={status === 'loading'}>
-                Generate Movie
+            <button className="generate-button" onClick={handleNewMovie} disabled={status === 'loading'}>
+                Generate New Movie
             </button>
-            <div>
             {status === 'loading' && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
             {title && posterPath && (
-                <MovieCard title={title} imageUrl={`https://image.tmdb.org/t/p/w500${posterPath}`} />
+                <div className="image-container">
+                <img src={imageUrl} alt={title}  className="movie-poster"/>
+                </div>
             )}
-            </div>
         </div>
     );
 }
