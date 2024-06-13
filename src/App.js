@@ -7,14 +7,17 @@ import './styles/styles.css';
 
 function App() {
     const dispatch = useDispatch();
-    const movie = useSelector((state) => state.movie.title);
+    const title = useSelector((state) => state.movie.title);
     const posterPath = useSelector((state) => state.movie.poster_path);
     const status = useSelector((state) => state.movie.status);
-    const error = userSelector((state) => state.movie.error);
+    const error = useSelector((state) => state.movie.error);
     
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
 
     const handleNewMovie = () => {
+        if (count === 2) {
+            alert("Warning: You can only get one more random movie!")
+        }
         if (count < 3) {
             dispatch(fetchMovie);
             setCount(count+1);
@@ -22,6 +25,9 @@ function App() {
             alert('Error: You have reached the limit of 3 movie suggestions')
         }
     }
+    useEffect(() => {
+        dispatch(fetchMovie)
+    }, [dispatch]);
 
     return (
         <div className="App">
@@ -29,9 +35,15 @@ function App() {
             <button onClick={handleNewMovie} disabled={status === 'loading'}>
                 Generate Movie
             </button>
+            <div>
+            {status === 'loading' && <p>Loading...</p>}
+            {error && <p>Error: {error}</p>}
+            {title && posterPath && (
+                <MovieCard title={title} imageUrl={`https://image.tmdb.org/t/p/w500${posterPath}`} />
+            )}
+            </div>
         </div>
     );
-
 }
 
 export default App;

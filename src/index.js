@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import { Provider } from 'react-redux';
 import store from './redux/store';
 //import './styles/styles.css';
@@ -14,4 +14,3 @@ root.render(
     </React.StrictMode>
   );
 
-  

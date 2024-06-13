@@ -3,7 +3,7 @@ import { fetchMovieRequest, fetchMovieSuccess, fetchMovieFailure} from "../actio
 const initialState = {
     title: null, 
     poster_path: null,
-    status: '',
+    status: 'idle',
     error: null,
 };
 
@@ -21,6 +21,7 @@ const movieReducer = (state = initialState, action) => {
                 status: 'succeeded',
                 title: action.payload.title,
                 poster_path: action.payload.poster_path,
+                imageUrl: action.payload.imageUrl,
                 error: null, 
             };
         case fetchMovieFailure:

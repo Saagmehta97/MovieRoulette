@@ -1,5 +1,5 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { getMovies } from '../../api/movieService';
+// import { createAsyncThunk } from '@reduxjs/toolkit';
+import { getMovies, getImageUrl } from '../../api/movieService';
 
 //Action type constants
 const FETCH_MOVIE_REQUEST = 'FETCH_MOVIE_REQUEST';
@@ -25,11 +25,14 @@ export const fetchMovie = () => {
         dispatch(fetchMovieRequest());
         try {
             const movies = await getMovies();
+            console.log("Getting movie:", movies);
             const randomMovie = movies[Math.floor(Math.random() * movies.length)];
+            randomMovie.imageUrl = getImageUrl(randomMovie.poster_path);
             dispatch(fetchMovieSuccess(randomMovie))
         }
         catch (error) {
-            dispatch(fetchMovieFailure);
+            console.error("Getting error:", error);
+            dispatch(fetchMovieFailure(error.message));
         }
     };
 };
