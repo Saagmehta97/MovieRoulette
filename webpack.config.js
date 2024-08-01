@@ -16,7 +16,7 @@ module.exports = {
         rules: [
             {
                 test: /\.jsx?/,
-                exclude: /node_modules/,
+                exclude: [/node_modules/, /dotenv/],
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -45,7 +45,4 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx']
     }
-
-
-
 }
