@@ -10,7 +10,7 @@ I will be focusing on React to try and create a movie generator for a user that 
   - user can filter by type of movie they want to watch
   - compare two movies against each other
 
-Tech Stack:
+<strong>Tech Stack:</strong>
   - Javascript
   - HTML5
   - CSS3
