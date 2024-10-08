@@ -1,6 +1,6 @@
+## Movie Roulette
 
-
-#I will be focusing on React to try and create a movie generator for a user that has a hard time picking what to watch. 
+I will be focusing on React to try and create a movie generator for a user that has a hard time picking what to watch. 
 
 MVP Features: 
   - User select a button to generate random popular movie and it will suggest what they should watch
