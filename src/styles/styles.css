@@ -29,7 +29,6 @@ body {
     width: 600px;
     animation: fadeIn 1s ease-in-out;
 }
-
 h1 {
     color: #333;
     margin-bottom: 20px;
@@ -61,7 +60,7 @@ h1 {
 
 .save-button {
     border-radius: 10px;
-    
+
 }
 
 .image-container {
