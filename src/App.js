@@ -14,6 +14,7 @@ function App() {
     const error = useSelector((state) => state.movie.error);
     
     const [count, setCount] = useState(1);
+    const [save, saveMovie] = useState(null)
 
     const handleNewMovie = () => {
         if (count === 4) {
@@ -30,12 +31,14 @@ function App() {
         dispatch(fetchMovie())
     }, [dispatch]);
 
+
     return (
         <div className="container">
-            <h1>Movie Generator</h1>
+            <h1>Movie Roulette</h1>
             <button className="generate-button" onClick={handleNewMovie} disabled={status === 'loading'}>
                 Generate New Movie
             </button>
+            <button className="save-button">Save movie for later</button>
             {status === 'loading' && <p>Loading...</p>}
             {error && <p>Error: {error}</p>}
             {title && posterPath && (
