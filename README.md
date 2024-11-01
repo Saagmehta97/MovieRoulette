@@ -15,3 +15,4 @@ I will be focusing on React to try and create a movie generator for a user that 
   - HTML5
   - CSS3
   - React/Redux
+
