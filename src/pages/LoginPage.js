@@ -1,11 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
     const  { login } = useContext(AuthContext);
     const navigate = useNavigate();
-    const [email, setEmail] = useContext('');
-    const [password, setPassword] = useContext('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
