@@ -3,6 +3,7 @@ import { AuthContext } from '../contexts/AuthContext';
 
 function LoginPage() {
     const  { login } = useContext(AuthContext);
+    const navigate = useNavigate();
     const [email, setEmail] = useContext('');
     const [password, setPassword] = useContext('');
 
@@ -19,6 +20,7 @@ function LoginPage() {
         const data = await response.json();
         if (response.ok) {
             login(data.token)
+            navigate('/');
         } else {
             alert(data.message)
         }

@@ -26,10 +26,11 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 //Connect to MongoDB
-mongoose.connect('mongodb://localhost/movie-roulette', {
-    useNewUrlParser: true, 
-    useUnifiedTopology: true,
-});
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log('MongoDB connected...'))
+    .catch((err) => console.log('MongoDB connection error: ', err));
 
-const PORT = process.env.PORT || 5000;
+
+//start server
+const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

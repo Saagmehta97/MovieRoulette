@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const auth = require('../middleware/auth');
-const User = require('../model/User');
+const User = require('../models/User');
 
 // Add movie to watch later
 router.post('/watchlater', auth, async (req, res) => {
